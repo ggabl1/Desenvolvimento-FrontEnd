@@ -1,0 +1,25 @@
+<div class="conteudo-login">
+<mat-form-field class="example-form-field">
+  <mat-label>E-mail</mat-label>
+  <input matInput type="text" [(ngModel)]="email">
+  @if (email) {
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="email=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  }
+</mat-form-field>
+
+<mat-form-field class="example-form-field">
+  <mat-label>Senha</mat-label>
+  <input matInput type="password" [(ngModel)]="senha">
+  @if (senha) {
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="senha=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  }
+</mat-form-field>
+
+<button class="logar" (click)="login()" mat-fab extended>
+  <mat-icon>person</mat-icon>Login
+</button>
+</div>
