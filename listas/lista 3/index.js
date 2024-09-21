@@ -10,11 +10,11 @@ app.listen(5000, () => {
 let dataBase = [
 
 ]
-app.get("/buscar-todos-os-usuarios", (req, res)=> {
-    try{
-        return res.status(200).json({dataBase})
-    } catch (error){
-        return res.status(500).json({error})
+app.get("/buscar-usuarios", (req, res) => {
+    try {
+        return res.status(200).json(dataBase)
+    } catch (error) {
+        return res.status(500).json({ error })
     }
 })
 let cadastrar_usuario = [
@@ -25,7 +25,7 @@ let cadastrar_usuario = [
         "confirmacaoSenha": ""
     }
 ]
-app.post("/adicionar-Usuario", (req, res) => {
+app.post("/adicionar-usuario", (req, res) => {
     try {
         let usuario = {
             nome: req.body.nome,
@@ -33,33 +33,26 @@ app.post("/adicionar-Usuario", (req, res) => {
             senha: req.body.senha,
             confirmacaoSenha: req.body.confirmacaoSenha
         }
-        return res.status(201).json({ "usuario cadastrado com sucesso"})
+        if (usuario.email == dataBase.find(email)) {
+            res.status(200).json("email ja existe")
+        }
+        dataBase.push(usuario)
+        return res.status(201).json({message: "email adicionado com sucesso"})
     } catch (error) {
-        return res.status(500).json({error})
+        return res.status(500).json(error)
     }
 })
-let usuario = {
-    nome: req.body.nome,
-    email: req.body.email,
-    senha: req.body.senha,
-    confirmacaoSenha: req.body.confirmacaoSenha
-}
 
-new function verificarEmail() {
-    try {
-        array.find(callback(email => cadastrar_usuario.email === 2))
-        if (senha != confirmacaoSenha) {
-            return "As senhas devem ser iguais"
-        }
-        else {
-            return "cadastro realizado com sucesso"
-        }
-    } catch {
-        return "email ja esta sendo utilizado"
-    }
-}
-
+app.post("/login", (req, res) => {
+   
 let login = {
-    email: req.body.email,
+    nome: req.body.nome,
     senha: req.body.senha
 }
+try {
+    if(dataBase.find(nome) == res.nome.body)
+    return res.status(200).json({message:"Login bem sucedido"})
+} catch (error) {
+    return res.status(500).json(error)
+}
+})

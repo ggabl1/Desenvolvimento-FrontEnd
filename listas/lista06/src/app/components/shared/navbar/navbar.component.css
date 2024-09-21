@@ -1,0 +1,12 @@
+.menu{
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+}
+.menu a{
+    background: rgb(220, 88, 88);
+    color: white;
+    margin: 15px;
+    font-size: 20px;
+    border-radius: 5px;
+}
